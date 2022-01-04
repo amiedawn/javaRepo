@@ -1,21 +1,15 @@
 package com.training.mars;
 
 import java.util.Scanner;
-import java.io.*;
+import java.text.DecimalFormat;
 
 public class ElectricBill {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		// 0-200 units: $50
 		// 201-500 units: $1.25/unit
 		// 501-1000 units: $1.00/unit
 		// 1001+ units: $0.75/unit
-		// units in whole numbers
-		
-		// use "System.out.printf("%.2f", val);" to print a float with 2 decimal places; example:
-		//float floatValue=22.34555f;
-		//System.out.print(String.format("%.2f", floatValue));
 		
 		Scanner scan = new Scanner(System.in); // get input, # of consumers
 
@@ -25,31 +19,35 @@ public class ElectricBill {
 		scan.skip(System.lineSeparator());
 		
 		String[] consumersArr = new String[size];
-				
-		// separate all values by comma
+		
 		for (int counter=0; counter<size; counter++) {
 			System.out.println("Please enter consumer " + (counter + 1) + "'s details in format: consumer number,name,unit consumption (no spaces): ");
 			consumersArr[counter] = scan.nextLine(); // read the entire line
+			// split comma-separated details into a list
+			String[] fields = consumersArr[counter].split(", ?"); // regex takes a comma followed or not by a space
+			String consumerNum = fields[0];
+			String name = fields[1];
+			String consumption = fields[2];
+			int consumptionInt = Integer.valueOf(consumption);
+			
+			// calculations
+			double payment = 0;
+			if (consumptionInt <= 200) {
+				payment = 50;
+			} else if (consumptionInt > 200 && consumptionInt <=500) {
+				payment = (consumptionInt - 200) * 1.25 + 50;
+			} else if (consumptionInt > 500 && consumptionInt <= 1000) {
+				payment = (consumptionInt - 500) * 1 + (300 * 1.25) + 50;
+			} else if (consumptionInt > 1000) {
+				payment = (consumptionInt - 1000) * .75 + (500 * 1) + (300 * 1.25) + 50;
+			}	
+			
+			DecimalFormat df = new DecimalFormat("0.00");
+			//df.setMaximumFractionDigits(2);
+			System.out.println("Consumer Number " + consumerNum + " - Bill Amount $" + df.format(payment));
 		}
-		scan.close();
-		
-		// split comma-separated details into a list
-//		String[] fields = consumersArr.split(", ?"); // regex takes a comma followed or not by a space
-//		String consumerNum = fields[0];
-//		String name = fields[1];
-//		String consumption = fields[2];
-		
-		
-		
-		//String[] splitConsumersArr = consumersArr.split(",");
-		
-		// calculations
-		
-		
-//		System.out.println("Printing all consumer bills, in format consumer number, name, unit consumption, bill payment: ");
-//		for (int counter=0; counter<size; counter++) {
-//			System.out.println(lineVectorconsumersArr[counter]);
-//		}
+		scan.close();		
+
 	}
 
 }
