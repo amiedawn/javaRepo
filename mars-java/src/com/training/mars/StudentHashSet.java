@@ -34,11 +34,12 @@ public class StudentHashSet {
 	public void setGrade(char grade) {
 		this.grade = grade;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(grade, name, rollNo);
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
