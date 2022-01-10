@@ -74,6 +74,7 @@ public class AbstractDemo1 {
 			double amount = scan.nextDouble();
 			
 			accounts[index].deposit(amount);
+		//	System.out.println("Your new balance is $" + balance);
 		} else {
 			System.out.println("No account exists for account number " + accountNumber);
 		}
@@ -100,6 +101,7 @@ public class AbstractDemo1 {
 			double amount = scan.nextDouble();
 			
 			accounts[index].withdraw(amount);
+			
 		} else {
 			System.out.println("No account exists for account number " + accountNumber);
 		}

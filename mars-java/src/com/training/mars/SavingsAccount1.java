@@ -16,8 +16,8 @@ public class SavingsAccount1 extends Account1 {
 			// first check amount
 			if (amount>0) {
 				balance += amount;
-				System.out.printf("Amount deposited: $ " + amount);
-				System.out.printf("Your savings account balance = $ " + balance);
+				System.out.printf("Amount deposited: $%.2f%n", amount);
+				System.out.printf(" Your savings account balance = $%.2f%n", balance);
 			} else {
 				System.out.println("You may not deposit a negative amount.");
 			}
@@ -29,11 +29,11 @@ public class SavingsAccount1 extends Account1 {
 				// check insufficient balance
 				if (amount <= balance) {
 					balance -= amount;
-					System.out.printf("Amount withdrawn: $ " + amount);
-					System.out.printf("Your savings account balance = $ " + balance);
-				}
-			} else {
-				System.out.println("A negative amount may not be withdrawn");
+					System.out.printf("Amount withdrawn: $%.2f%n", amount);
+					System.out.printf(" Your savings account balance is $%.2f%n", balance);
+				} else {
+					System.out.println("You do not have sufficient funds for this withdrawal.");
+					}
 			}
 		}
 	
