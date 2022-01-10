@@ -7,8 +7,8 @@ public class SavingsAccount1 extends Account1 {
 	}
 	
 	// parameter constructor
-	public SavingsAccount1 (int accountNumber) {
-		super(accountNumber);				
+	public SavingsAccount1 (int accountNumber, String name) {
+		super(accountNumber, name);				
 	}
 	
 	// deposit

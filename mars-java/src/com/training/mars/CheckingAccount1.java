@@ -7,8 +7,8 @@ public class CheckingAccount1 extends Account1 {
 		}
 		
 		// parameter constructor
-		public CheckingAccount1 (int accountNumber) {
-			super(accountNumber);
+		public CheckingAccount1 (int accountNumber, String name) {
+			super(accountNumber, name);
 			
 		}
 		

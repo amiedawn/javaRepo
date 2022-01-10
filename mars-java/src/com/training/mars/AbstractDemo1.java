@@ -45,7 +45,7 @@ public class AbstractDemo1 {
 		return choice;
 	}
 	
-	public static int searchAccount(Account1 accounts [], int count, int accountNumber) {
+	public static int searchAccount(Account1 accounts [], int count, int accountNumber, String name) {
 		for (int i=0; i<count; i++) {
 			if (accounts[i].getAccountNumber() == accountNumber) {
 				return i;
@@ -60,8 +60,12 @@ public class AbstractDemo1 {
 		System.out.println("\nPlease enter account number: ");
 		int accountNumber = scan.nextInt();
 		
+		// get name
+				System.out.println("\nPlease enter name: ");
+				String name = scan.next();
+		
 		// search for account
-		int index = searchAccount(accounts, count, accountNumber);
+		int index = searchAccount(accounts, count, accountNumber, name);
 		
 		// if account is found
 		if (index>=0) {
@@ -82,8 +86,12 @@ public class AbstractDemo1 {
 		System.out.println("\nPlease enter account number: ");
 		int accountNumber = scan.nextInt();
 		
+		// get name
+				System.out.println("\nPlease enter name: ");
+				String name = scan.next();
+		
 		// search for account
-		int index = searchAccount(accounts, count, accountNumber);
+		int index = searchAccount(accounts, count, accountNumber, name);
 		
 		// if account is found
 		if (index>=0) {
@@ -102,15 +110,20 @@ public class AbstractDemo1 {
 		Account1 account = null;
 		int choice = accountMenu(scan);
 		int accountNumber;
+		String name = "";
 		System.out.println("Enter account number: ");
 		accountNumber = scan.nextInt();
+		System.out.println("Enter name: ");
+		name = scan.next();
 		
 		// choice is checking
 		if (choice == 1) {
-			account = new CheckingAccount1(accountNumber);
+			account = new CheckingAccount1(accountNumber, name);
+			System.out.println("Congratulations, " + name + "! Your checking account is open.");
 		} else {
 			// choice is savings
-			account = new SavingsAccount1(accountNumber);
+			account = new SavingsAccount1(accountNumber, name);
+			System.out.println("Congratulations, " + name + "! Your savings account is open.");
 		}
 		
 		return account;
@@ -119,7 +132,7 @@ public class AbstractDemo1 {
 	// menu
 	public static int menu(Scanner scan) {
 		System.out.println("Bank Account Menu");
-		System.out.println("1. Create New Account");
+		System.out.println("1. Choose Account Type to Open");
 		System.out.println("2. Deposit Funds");
 		System.out.println("3. Withdraw Funds");
 		System.out.println("4. Quit");

@@ -3,6 +3,7 @@ package com.training.mars;
 public abstract class Account1 {
 
 	private int accountNumber;
+	private String name;
 	protected double balance;
 	
 	// default constructor
@@ -10,8 +11,9 @@ public abstract class Account1 {
 		
 	}
 	
-	public Account1 (int accountNumber) {
+	public Account1 (int accountNumber, String name) {
 		this.accountNumber = accountNumber;
+		this.name = name;
 		balance = 0;
 	}
 	
@@ -22,6 +24,10 @@ public abstract class Account1 {
 	
 	public int getAccountNumber() {
 		return this.accountNumber;
+	}
+	
+	public String getName() {
+		return this.name;
 	}
 	
 	// deposit
